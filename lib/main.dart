@@ -24,7 +24,12 @@ class MyHomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text('TextField'),
         ),
-        body:s
+        body:TextField(
+          decoration:InputDecoration(
+            border:OutlineInputBorder(),
+            labelText:'여기에 입력하세요',
+          ),
+        )
     );
   }
 }
