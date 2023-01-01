@@ -10,45 +10,55 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch:Colors.blue,
       ),
-      home:MyHomePage(),
+      home:HeroPage(),
     );
   }
 }
 // 여기까지는 공통코드
 
-//여기부터 수정
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+// 첫 번째 페이지
+class HeroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
-        title:Text('Dialog'),
+        title:Text('Hero'),
       ),
-      body:Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          GestureDetector(
-            onTap:(){
-              print('GestureDector 클릭!!');
-            },
-            child:Text('클릭 Me!!'),
+      body:Center(
+        child:GestureDetector(
+          onTap:() {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HeroDetailPage()),
+            );
+          },
+          child:Hero(
+            tag:'image',
+            child:Image.asset(
+              'assets/sky.jpg',
+              width:100,
+              height:100,
+            ),
           ),
-          SizedBox(
-            height:40,
-          ),
-          InkWell(
-            onTap:(){
-              print('InkWell 클릭!!');
-            },
-            child:Text('클릭 Me!!'),
-          ),
-        ],
-      )
+        ),
+      ),
     );
   }
 }
+
+// 두 번째 페이지
+class HeroDetailPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar:AppBar(
+        title:Text('Hero Detail'),
+      ),
+      body:Hero(
+        tag:'image',
+        child:Image.asset('assets/sky.jpg'),
+      ),
+    );
+  }
+}
+
