@@ -58,3 +58,14 @@ Hero 위젯은 화면 전환 시 자연스럽게 연결되는 애니메이션을
 이전 화면으로 돌아갈 때도 자연스럽게 애니메이션이 동작합니다.
 ```
 ![image](https://user-images.githubusercontent.com/58906858/210161307-3fcc1b36-7981-4381-ad02-d43daa831282.png)
+
+#### AnimatedContainer
+```
+Hero 위젯이 화면 전환 시 애니메이션 효과를 지원했다면 AnimatedContainer 위젯은 
+한 화면 내에서 setState() 함수를 호출하여 화면을 새로 그릴 때 변경된 프로퍼티에 의해
+애니메이션 되도록 해줍니다.
+Container 위젯과 쓰임새는 비슷하지만 duration, curve 등의 애니메이션 관련 프로퍼티가 있습니다.
+```
+탭했을 때 크기가 랜덤하게 변경되어 애니메이션 되는 예를 작성하였습니다.
+![image](https://user-images.githubusercontent.com/58906858/210161476-59031c1b-fdc2-459f-b16c-cdb03f443ebb.png)
+
