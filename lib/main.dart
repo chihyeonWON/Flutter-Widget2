@@ -23,29 +23,31 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _valueList = ['첫 번째', '두 번째', '세 번째'];
-  var _selectedValue = '첫 번째';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
-        title:Text('DropDownButton'),
+        title:Text('Dialog'),
       ),
-      body: DropdownButton(
-        value:_selectedValue,
-        items:_valueList.map(
-            (value) {
-              return DropdownMenuItem(
-                value:value,
-                child:Text(value),
-              );
+      body:Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          GestureDetector(
+            onTap:(){
+              print('GestureDector 클릭!!');
             },
-        ).toList(),
-        onChanged:(value) {
-          setState(() {
-            _selectedValue='첫 번째';
-          });
-        }
+            child:Text('클릭 Me!!'),
+          ),
+          SizedBox(
+            height:40,
+          ),
+          InkWell(
+            onTap:(){
+              print('InkWell 클릭!!');
+            },
+            child:Text('클릭 Me!!'),
+          ),
+        ],
       )
     );
   }
