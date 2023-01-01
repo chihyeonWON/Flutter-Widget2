@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math'; // random클래스 사용시 필요
 
 void main() => runApp(MyApp());
 
@@ -10,53 +11,43 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch:Colors.blue,
       ),
-      home:HeroPage(),
+      home:AnimatedContainerPage(),
     );
   }
 }
 // 여기까지는 공통코드
 
-// 첫 번째 페이지
-class HeroPage extends StatelessWidget {
+class  AnimatedContainerPage extends StatefulWidget {
+  @override
+  _AnimatedContainerPageState createState() => _AnimatedContainerPageState();
+}
+
+class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
+  var _size = 100.0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
-        title:Text('Hero'),
+        title: Text('AnimatedContainer'),
       ),
       body:Center(
         child:GestureDetector(
-          onTap:() {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HeroDetailPage()),
-            );
+          onTap:(){
+            final random = Random(); // Radnom 클래스 사용 준비
+            setState(() {
+              //클릭할 때마다 100.0~299.0 사이의 실수를 랜덤하게 얻기
+              _size = random.nextInt(200).toDouble() +100;
+            });
           },
-          child:Hero(
-            tag:'image',
-            child:Image.asset(
-              'assets/sky.jpg',
-              width:100,
-              height:100,
-            ),
+          child:AnimatedContainer(
+            duration:Duration(seconds:1),
+            width:_size,
+            height:_size,
+            child:Image.asset('assets/sky.jpg'),
+            curve:Curves.fastOutSlowIn,
           ),
         ),
-      ),
-    );
-  }
-}
-
-// 두 번째 페이지
-class HeroDetailPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar:AppBar(
-        title:Text('Hero Detail'),
-      ),
-      body:Hero(
-        tag:'image',
-        child:Image.asset('assets/sky.jpg'),
       ),
     );
   }
