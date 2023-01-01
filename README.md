@@ -26,3 +26,12 @@ CheckBox와 Switch는 모양만 다를 뿐 사용 방법은 동일합니다.
 onChanged 이벤트에서 변경된 값을 반영합니다.
 ```
 ![image](https://user-images.githubusercontent.com/58906858/210126776-0780b56c-e108-47e7-af11-d8d83644a659.png)
+
+#### DropDownButton
+```
+여러 아이템 중 하나를 고를 수 있는 콤보박스 형태의 위젯입니다.
+value 프로퍼티에 표시할 값을 지정합니다.
+items 프로퍼티에는 표시할 항목들을 DropdownMenuItem 클래스의 인스터들을 담은 리스트로 지정해야 합니다
+상태를 가지므로 StatefulWidget 으로 작성합니다.
+```
+![image](https://user-images.githubusercontent.com/58906858/210160202-da8db517-3ee8-4b47-941e-b8220ea053e3.png)
