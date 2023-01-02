@@ -76,3 +76,10 @@ SliverAppBar, SliverFillRemaining은 화면 헤더를 동적으로 표현하는 
 AppBar 형태로 애니메이션됩니다. 이런 효과를 Sliver효과라고 합니다.
 ```
 ![image](https://user-images.githubusercontent.com/58906858/210195946-cc160509-961e-4396-aee9-30a124e22618.png)
+
+#### SliverAppBar, SliverList
+```
+하나의 정적인 화면을 구성하는 SliverFillRemaining 위젯과는 달리 ListView를 사용하면서 Sliver효과를 주고 싶다면
+SliverList를 사용하여 리스트를 구성할 수 있습니다.
+```
+![image](https://user-images.githubusercontent.com/58906858/210196360-6e6f6e51-41f7-4916-ac8c-33890b361b0d.png)
