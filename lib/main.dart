@@ -11,43 +11,39 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch:Colors.blue,
       ),
-      home:AnimatedContainerPage(),
+      home:SliverListPage(),
     );
   }
 }
 // 여기까지는 공통코드
-
-class  AnimatedContainerPage extends StatefulWidget {
-  @override
-  _AnimatedContainerPageState createState() => _AnimatedContainerPageState();
-}
-
-class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
-  var _size = 100.0;
-
+class SliverListPage extends StatelessWidget {
+  final _items = List.generate(50, (i) => ListTile(title: Text('No. $i')));
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(
-        title: Text('AnimatedContainer'),
-      ),
-      body:Center(
-        child:GestureDetector(
-          onTap:(){
-            final random = Random(); // Radnom 클래스 사용 준비
-            setState(() {
-              //클릭할 때마다 100.0~299.0 사이의 실수를 랜덤하게 얻기
-              _size = random.nextInt(200).toDouble() +100;
-            });
-          },
-          child:AnimatedContainer(
-            duration:Duration(seconds:1),
-            width:_size,
-            height:_size,
-            child:Image.asset('assets/sky.jpg'),
-            curve:Curves.fastOutSlowIn,
+      body:CustomScrollView(
+        slivers:<Widget>[
+          SliverAppBar( // 헤더 영역
+            pinned:true, // 축소시 상단에 AppBar가 고정되는지 설정
+            expandedHeight:180.0, // 헤더의 최대 높이
+            flexibleSpace:FlexibleSpaceBar(
+              title:Text('Sliver'),
+              background:Image.asset(
+                'assets/sky.jpg',
+                fit:BoxFit.cover,
+              ),
+            ),
+            actions: <Widget>[
+              IconButton(
+                icon:Image.asset('assets/sky.jpg'),
+                onPressed:(){},
+              )
+            ],
           ),
-        ),
+          SliverList(
+            delegate:SliverChildListDelegate(_items),
+          )
+         ]
       ),
     );
   }
